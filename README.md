@@ -10,6 +10,17 @@ TO BE FILLED
 ...
 
 
+## Steps to run the analysis
+
+On a dedicated VM (inca.interact-uva.surf-hosted.nl), we calculate the softcosine similarity using the following script:
+`src/data-processing/softcosine_newsevents.py`
+
+This produces the data in
+`data/raw-private`   # later veranderen, kan prima in public
+
+
+
+
 ## Folder structure and files
 
 All files/folders in bold are archived publicly. 
