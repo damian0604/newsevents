@@ -8,7 +8,7 @@ myinca=Inca()
 
 print('Starting the softcosine similarity...', datetime.now())
 
-myinca.analysis.cosine_similarity.fit(source=['nu', 'ad (www)', 'volkskrant (www)'], target=['nu', 'ad (www)', 'volkskrant (www)'], sourcetext='softcosine_processed', targettext='softcosine_processed', from_time='2018-11-26', to_time='2019-05-26', days_before=0, days_after=2, merge_weekend=True, filter_below=2, destination='/mnt/elastic/cosine_output/')
+myinca.analysis.cosine_similarity.fit(source=['nu', 'ad (www)', 'volkskrant (www)'], target=['nu', 'ad (www)', 'volkskrant (www)'], sourcetext='softcosine_processed', targettext='softcosine_processed', from_time='2018-11-26', to_time='2019-05-26', days_before=0, days_after=2, merge_weekend=True, filter_below=2, threshold=0.2, destination='/mnt/elastic/cosine_output/')
             
 print('Done!!')
 print(datetime.now())
