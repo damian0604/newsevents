@@ -10,7 +10,16 @@ TO BE FILLED
 ...
 
 
-## Steps to run the analysis
+## Unpacking the data and creating working files
+`unzip raw-private-encrypted.zip` will create the folder `raw-private`, which contains all necessary data to run the jupyter notebooks.
+It is a password-protected file.
+
+Then, run `src/data-processing/030-pkl2net.py` in order to create the folder `data/intermediate` with the necessaty `.net` files.
+
+
+
+
+## Steps to fully run the analysis
 
 On a dedicated VM (inca.interact-uva.surf-hosted.nl), we calculate the softcosine similarity using the following script:
 `src/data-processing/softcosine_newsevents.py`
