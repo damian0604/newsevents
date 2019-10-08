@@ -42,6 +42,7 @@ fn = path+'/articles_as_json-lines.json'
 with open(fn, mode='w') as f:
     for _id in tqdm(unique_ids):
         doc = myinca.database._client.get(id = _id, index='inca')['_source']
+        doc['_id'] = _id
         doc.pop('htmlsource')
         doc.pop('META')
         f.write(json.dumps(doc))
