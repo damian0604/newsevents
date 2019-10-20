@@ -25,6 +25,6 @@ for modelname, filenames in models:
             # write to pajek
             path = '../../data/intermediate/{}/'.format(modelname)
             if not os.path.exists(path):
-                os.mkdir(path)
+                os.makedirs(path)
             nx.write_pajek(G, path+os.path.basename(fn)[:-3]+'net')
 
