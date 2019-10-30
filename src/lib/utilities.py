@@ -2,7 +2,7 @@ from collections import Counter
 from math import log
 import pandas as pd
 
-
+DECIMALS_IN_OUTPUT = 2
 def most_distinguishing_words(corpus1, corpus2, top=10, overrepresented_only=True):
     '''
     Takes to corpora (either as single string or as list of words) as input
@@ -84,8 +84,8 @@ def most_distinguishing_words(corpus1, corpus2, top=10, overrepresented_only=Tru
             freqcorp2 = corpus2[word]
         except KeyError:
             freqcorp2 = 0
-        e1 = str(e1dict[word])
-        e2 = str(e2dict[word])
+        e1 = e1dict[word]
+        e2 = e2dict[word]
 
         if overrepresented_only==True:
             if freqcorp1 <= e1dict[word]:
@@ -94,9 +94,9 @@ def most_distinguishing_words(corpus1, corpus2, top=10, overrepresented_only=Tru
         results = results.append({'loglikelihood':value,
                         'word':word,
                         'observed corpus 1':freqcorp1,
-                        'expected corpus 1':e1,
+                        'expected corpus 1':round(e1, DECIMALS_IN_OUTPUT),
                         'observed corpus 2':freqcorp2,
-                        'expected corpus 2': e2}, ignore_index=True)
+                                  'expected corpus 2': round(e2, DECIMALS_IN_OUTPUT)}, ignore_index=True)
         
         i+=1
         if i==top:
