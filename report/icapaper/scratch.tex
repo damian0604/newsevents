@@ -1,0 +1,100 @@
+
+% DIT STUKJE KONNEN WE BETER ERGENS ANDERS PLAATSEN, MISSCHIEN BIJ EEN SPECIFIEKE HYPOTHESE OF ONDERZOEKSVRAAG
+%Therefore, a major aim of this project is to develop an approach that allows measuring the extent to which the same news events are covered in different outlets. This allows us to go beyond comparisons like ``Outlet A's coverage consists for 40\% of politics and 20\% of sports, whereas outlet B's coverage consists for 10\% of politics and 30\% of sports'' \todo{voorbeelden van dit soort onderzoek toevoegen}. We could, instead, make concrete statements over what, if any, news event a user of outlet A would completely miss, compared to a user of outlet B. Especially in media environments in which (hyper-)partisan media or niche media play an important role, this could be of major interest.
+
+
+% that if an outlet published on the same issue as another outlet, but did so a day later, this was probably influenced by the earlier publication. To stay in the example from the beginning of this section: if the New York Times publishes a story on its front page, and a similar story is published nowhere else the same day, but it multiple related stories are published in other news outlets the next day, then it is reasonable to assume that the NYT had an agenda-setting influence.
+% DIT HIER IS DE LANGERE VERSIE VAN DE VOLGENDE ZIN:
+%But how can we make such inferences in today's online environment with its 24-hour news cycle? If two websites publish about the same event within 5 minutes, it probably makes sense to treat this as simultaneously, and with a 24-hour delay, as not (and thus potentially as an outcome of an inter-media agenda setting process). But what about a difference of three hours? Two? One?
+%There may be contexts, though, in which binning timestamps into days may be appropriate. For instance, \cite{Haim2018a} investigate intermedia agenda setting between social network sites and news websites. In this case, the underlying model (journalist reads about topic X on social media, devotes some time to research and writing, and finally publishes the next day) is probably reasonable. However, we still need to figure out better ways of dealing with the shift from daily newspaper editions to continous time stamps in agenda-setting research.
+
+
+
+% DIT HIER KAN MISSCHIEN NAAR DE METHODESECTIE. HET IS IMMERS EEN METHODOLOGISCH PROBLEEM
+
+%To complicate things even further, some types of events are \emph{not} covered by multiple articles.
+%From the perspective of a news organization, we can distinguish two goals when selecting which events to cover: (1) publishing what everyone else publishes so that readers do not feel that they ``miss out'' on important news, while at the same time (2) publishing additional content that competitors do not have to to find a niche.
+%An example for this is local reporting:
+%The prime reason to read a local or regional newspaper is that it covers events that other (national) media do not have. 
+%The same holds true for a medium that specializes in an area like financial reporting.
+%Neglecting the first point can lead to a fragmentation of the public sphere \citep[see, e.g.,][]{Marcinkowski2008}, neglecting the second point can lead to substitution, as the potential users do not see an added value compared to other media outlets \citep[see e.g.][]{Dimmick2004}.
+
+%It seems that in order to study the coverage of events in a given media system, we first need to find out which articles actually cover the same event.
+%This may be trivial if we want to conduct a case study in which we know the event a priori and can, for instance, enter some search terms in a database (e.g., ``Watergate''). 
+%But if we want to answer the question which events (of the magnitude of events happening each day) get covered by which outlets, we need to start bottom-up and identify news events based on the articles we have.
+%It should be obvious that for any study that includes more than a couple of hundred articles, it is impossible to do this manually.
+
+
+
+
+
+
+
+
+
+
+%We can build on earlier work:
+%\begin{itemize}
+%\item Clustering. For instance, \cite{Nicholls2018} have used network clustering techniques to detect what they call ``news story chains''.
+%\item Knowledge extraction. For instance, \cite{Vossen2016} build a system to ``read'' the news, extracting a triplet-based knowledge representation from news. (MAYBE TOO ADVANCED/UNNECESSARY?)
+%\item Event detection. There is a rich literature on event detection. For instance, \cite{Atefeh2015} provides a literature review of event detection on Twitter, and \cite{Graus2018} show how emerging entities in news streams can be detected.
+%\item Document similarity. Several studies \citep{Boumans2018,Welbers2016} have measured the overlap in words or characters to estimate whether two articles are dealing with the same event.
+%\item Word mover's distance (WMD). A potential problem with all approaches that rely on bag-of-word representations (i.e., most of the approaches mentioned above) is that they fail if two articles use different words that essentially mean the same. \cite{Kusner2015} give the two example sentences ``Obama speaks to the media in Illinois'' and ``The President greets the press in Chicago''. Except stopwords, they do not share a single word and yet mean essentially the same. They present a measure called Word mover's distance (WMD) that uses word embeddings to establish that both documents are actually very similar.
+%\end{itemize}
+
+
+
+
+
+
+
+
+
+---- OLD SCRATCH BELOW ----
+
+
+\subsection{Evaluation}
+
+\todo[inline]{Hier moeten we over nadenken. Ik denk dat we in ieder geval het volgende moeten doen:
+
+- een vergelijking met 'standaard' cosine similarity (en mogelijkerwijs met de methode van \cite{Nicholls2018}) \newline
+- het handmatig moeten checken. Bijvoorbeeld de verslaggeving van een paar dagen pakken en kijken of we met de hand op hetzelfde zouden uitkomen. Hoe precies valt nog te bezien...}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\todo[inline]{TOEVOEGEN We provide our code open-source so that others can use our techniques (INCA) \citep{INCA}. In addition, we pay close attention to feasibility and computational resources needed. 
+}
+
+\todo[inline]{
+
+OLD SCRATCH FOR METHOD:::
+
+We build on \cite{Nicholls2018} by using the same network partitioning technique, but unlike the authors, we use SCM to determine the similarity between articles more accurately.
+
+Additionally, researchers interested in identifying news events need to think of temporal constraints they may want to set. This is both of conceptual and  practical importance.
+
+
+
+
+%The data set is preprocessed for two reasons: a) reducing the corpus to contain only valuable information regarding the topic of the article improves the accuracy of news event detection, and b) reducing the length of individual articles in the corpus reduces the computation time of the SCM substantively. The articles' text is converted to lowercase and punctuation is removed. Additionally, utilizing the NLTK Dutch stop word corpus and part-of-speech tagger \citep{Bird:2009:NLP:1717171}, we removed stop words and reduced the data set to nouns, adjectives and adverbs. We end up with a BOW-representation of the articles' most relevant words.
+
+%Our methodological approach can be divided into two parts: (1) calculating the pairwise document similarity, and (2) clustering documents in news event groups based on their similarity scores. 
+
+In the first part, we calculate the SCM, which produces a pairwise document similarity score. The method takes a BOW vector representation of the corpus. SCM computes a standard cosine similarity, but the method assumes that the document vectors are expressed non-orthogonal. The angle between two document vectors is equal to the documents' words embeddings. In other words, SCM takes into account that \emph{different} words can be \emph{semantically related}. As a result, it recognizes that the same news event can be described in different words that have a similar meaning. We make use of an existing word2vec model trained on 30 years of Dutch language news \citep{AEM}. 
+
+Considering we define a news event to emerge and disappear within 3 days, we calculate the SCM on a three-day sliding window in which we compare each article to all articles published on the same day or up to two days after. Saturday and Sunday are merged to account for the lack of news on weekends \todo{do we also account for local holidays?}. Moreover, term frequency-inverse document frequency (tf-idf) weighting is applied to the data in order to give important words more weight. To exclude unnecessary comparisons (e.g., sports articles will not share the same news event with articles about politics), and thus reducing computation time, we categorized the news articles into four categories (Politics, Business, Entertainment, and Other) by using an existing classifier (see \cite{vermeer2018} for more information). The SCM is calculated on each category separately, after which they are combined again for further analyses.
+
+
+}
