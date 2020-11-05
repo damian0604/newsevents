@@ -3,11 +3,9 @@
 Damian Trilling & Marieke van Hoof
 
 
-TO BE FILLED 
+This repo accompanies the following article:
 
-....
-
-...
+Damian Trilling & Marieke van Hoof (2020) Between Article and Topic: News Events as Level of Analysis and Their Computational Identification, Digital Journalism, DOI: [10.1080/21670811.2020.1839352](htttps://dx.doi.org/10.1080/21670811.2020.1839352)
 
 
 ## Unpacking the data and creating working files
@@ -25,7 +23,7 @@ On a dedicated VM (inca.interact-uva.surf-hosted.nl), we calculate the softcosin
 `src/data-processing/softcosine_newsevents.py`
 
 This produces the data in
-`data/raw-private`   # later veranderen, kan prima in public
+`data/raw-private`   
 
 
 
